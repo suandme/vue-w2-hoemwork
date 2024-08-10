@@ -9,8 +9,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <div class="wrapper">
         <nav>
           <RouterLink to="/">Home</RouterLink> |
-          <RouterLink to="/about">About</RouterLink> |
-          
+          <RouterLink to="/WorkViewOne">第一週作業</RouterLink> |
           <RouterLink to="/week2">第二週作業</RouterLink> |
           
         </nav>
@@ -20,10 +19,4 @@ import { RouterLink, RouterView } from 'vue-router'
     <RouterView />
   </div>
      
-
-  <RouterView />
 </template>
-
-<style scoped>
-
-</style>
