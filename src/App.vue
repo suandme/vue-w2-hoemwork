@@ -11,7 +11,7 @@ import { RouterLink, RouterView } from 'vue-router'
           <RouterLink to="/">Home</RouterLink> |
           <RouterLink to="/WorkViewOne">第一週作業</RouterLink> |
           <RouterLink to="/WorkViewTwo">第二週作業</RouterLink> |
-          
+          <RouterLink to="/WorkViewThree">第三週作業</RouterLink> |
         </nav>
       </div>
     </header>
