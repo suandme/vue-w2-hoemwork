@@ -1,12 +1,14 @@
 <script setup>
 import { computed, ref} from 'vue';
-
+//拆元件
+import CarMuneOrder from '@/components/CarMuneOrder.vue';
+import CarOrder from '@/components/CarOrder.vue';
 
 //購物車清單
 const carList=ref([]);
 //購物車清單的備註
 const cardemo=ref('');
-//訂單完成
+//訂單完成清單=>(CarOrder)
 const buycarList=ref(
     {
         carList:undefined,
@@ -119,14 +121,10 @@ const ClickDel=(Index)=>{
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-4">
-        <div class="list-group" v-for="todos in data" :key="todos.id" >
-          <a href="#" @click.prevent="addCar(todos)" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">{{todos.name}}</h5>
-              <small>${{ todos.price }}</small>
-            </div>
-            <p class="mb-1">{{todos.description}}</p></a>
-        </div>
+       <CarMuneOrder 
+       :list-todos="data" 
+      v-on:emit-add-cart="addCar"/>
+      
       </div>
       <div class="col-md-8">
         <table class="table">
@@ -181,35 +179,11 @@ const ClickDel=(Index)=>{
     </div>
 
     <hr />
+   
     <div class="row justify-content-center" v-if="buycarList.carList">
       <div class="col-8">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">
-              <h5>訂單</h5>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">品項</th>
-                    <th scope="col">數量</th>
-                    <th scope="col">小計</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="buytodo in buycarList.carList" :key="buytodo.id">
-                    <td>{{buytodo.name}}</td>
-                    <td>{{buytodo.count}}</td>
-                    <td>{{buytodo.price *buytodo.count}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="text-end">備註: <span>{{buycarList.demo}}</span></div>
-              <div class="text-end">
-                <h5>總計: <span>${{buycarList.PayPrice}}</span></h5>
-              </div>
-            </div>
-          </div>
-        </div>
+       <!-- 元件:塞入ProPs資料 -->
+        <CarOrder :inner-buycarList="buycarList"/>
       </div>
     </div>
   </div>
